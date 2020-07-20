@@ -5,47 +5,35 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.ma.appjava11.repositorio.PlanetaRepository;
 
 
-
+@Document
 public class Planeta implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Autowired
-	PlanetaRepository planetaRepository;
+
 	
+	@Id
+	private String id;
 	private String nome;
 	private String terreno;
 	private String clima;
 	
 	public Planeta() {}
 	
-	public void addNomeClimaTerreno(String nome, String clima, String terrene) {
+	public Planeta(String nome, String clima, String terrene) {
 		this.setClima(clima);
 		this.setNome(nome);
 		this.setTerreno(terrene);	
 	}
 	
-	public List<Planeta> listarPlanetas(){
-		return planetaRepository.findAll();
-	}
-	
-	public Optional<Planeta> buscarPorNome(String nome) {
-		return Optional.of(planetaRepository.findByNome(nome).get(0));
-	}
-	public Optional<Planeta> buscarPorID(Integer id) {
-		return planetaRepository.findById(id);
-	}
-	public void removerPlaneta(Integer id) {
-		planetaRepository.deleteById(id);
-	}
-	
-
 	public String getNome() {
 		return nome;
 	}
@@ -68,6 +56,14 @@ public class Planeta implements Serializable{
 
 	public void setClima(String clima) {
 		this.clima = clima;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	@Override
