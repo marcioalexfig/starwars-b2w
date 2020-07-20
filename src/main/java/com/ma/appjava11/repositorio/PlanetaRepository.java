@@ -9,5 +9,4 @@ import com.ma.appjava11.domain.Planeta;
 public interface PlanetaRepository extends MongoRepository<Planeta, Integer> {
 	Planeta findByNome(String nome);
 	Planeta findById(String id);
-	
 }

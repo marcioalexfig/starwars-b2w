@@ -27,7 +27,7 @@ public class PlanetaService {
 		return planetaRepository.findById(id);
 	}
 	
-	public void removerPlaneta(Integer id) {
-		planetaRepository.deleteById(id);
+	public void removerPlaneta(String id) {
+		planetaRepository.delete(planetaRepository.findById(id));
 	}
 }
