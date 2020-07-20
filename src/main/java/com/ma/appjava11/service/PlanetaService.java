@@ -20,11 +20,11 @@ public class PlanetaService {
 	}
 	
 	public Planeta buscarPorNome(String nome) {
-		return planetaRepository.findByNome(nome).get(0);
+		return planetaRepository.findByNome(nome);
 	}
 	
 	public Planeta buscarPorID(String id) {
-		return planetaRepository.findById(id).get(0);
+		return planetaRepository.findById(id);
 	}
 	
 	public void removerPlaneta(Integer id) {
