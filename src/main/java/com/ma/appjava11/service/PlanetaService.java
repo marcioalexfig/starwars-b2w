@@ -30,4 +30,8 @@ public class PlanetaService {
 	public void removerPlaneta(String id) {
 		planetaRepository.delete(planetaRepository.findById(id));
 	}
+	
+	public Planeta gravarPlaneta(Planeta planeta) {
+		return planetaRepository.insert(planeta);
+	}
 }

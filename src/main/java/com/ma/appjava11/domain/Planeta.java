@@ -28,10 +28,10 @@ public class Planeta implements Serializable{
 	
 	public Planeta() {}
 	
-	public Planeta(String nome, String clima, String terrene) {
+	public Planeta(String nome, String clima, String terreno) {
 		this.setClima(clima);
 		this.setNome(nome);
-		this.setTerreno(terrene);	
+		this.setTerreno(terreno);	
 	}
 	
 	public String getNome() {
