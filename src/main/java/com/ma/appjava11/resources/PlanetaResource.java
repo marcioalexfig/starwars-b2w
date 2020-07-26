@@ -34,7 +34,7 @@ import reactor.core.publisher.Mono;
 public class PlanetaResource {
 	
 	@Autowired
-	private PlanetaService panetaService;
+	private PlanetaService planetaService;
 
 	@Value("${api.planetas}")
 	public String url;
@@ -62,7 +62,7 @@ public class PlanetaResource {
 		}
 		
 		Planeta planeta = new Planeta(planetaDto.getNome(), planetaDto.getClima(), planetaDto.getTerreno(), qtdFilmes);
-		Planeta planetaNovo = panetaService.gravarPlaneta(planeta);
+		Planeta planetaNovo = planetaService.gravarPlaneta(planeta);
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}/id").buildAndExpand(planetaNovo.getId()).toUri();
 		PlanetaDTO resultado = new PlanetaDTO(planetaNovo.getNome(),
@@ -76,7 +76,7 @@ public class PlanetaResource {
 	@GetMapping("/")
 	public ResponseEntity<List<Planeta>> listar(){
 		List<Planeta> lista = new ArrayList<>();
-		panetaService.listarPlanetas().forEach(planeta -> {
+		planetaService.listarPlanetas().forEach(planeta -> {
 			lista.add(planeta);
 		});
 		return ResponseEntity.ok(lista);
@@ -85,7 +85,7 @@ public class PlanetaResource {
 	@DeleteMapping("/{id}/id")
 	public ResponseEntity<?> deletar(@PathVariable String id) {
 		try {
-			panetaService.removerPlaneta(id);
+			planetaService.removerPlaneta(id);
 		}catch(IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.BAD_GATEWAY).build(); 
 		}
@@ -94,7 +94,7 @@ public class PlanetaResource {
 	
 	@GetMapping("/{nome}/nome")
 	public ResponseEntity<?> buscaPorNome(@PathVariable String nome) {
-		Planeta planeta = panetaService.buscarPorNome(nome);
+		Planeta planeta = planetaService.buscarPorNome(nome);
 		if(planeta!=null) {
 			PlanetaDTO planetaDto = new PlanetaDTO(
 			planeta.getNome(), 
@@ -112,7 +112,7 @@ public class PlanetaResource {
 	
 	@GetMapping("/{id}/id")
 	public ResponseEntity<?> buscarPorid(@PathVariable String id) {
-		Planeta planeta = panetaService.buscarPorID(id);
+		Planeta planeta = planetaService.buscarPorID(id);
 		if(planeta!=null) {
 			PlanetaDTO planetaDto = new PlanetaDTO(
 				planeta.getNome(), 
