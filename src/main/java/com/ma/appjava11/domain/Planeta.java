@@ -25,15 +25,26 @@ public class Planeta implements Serializable{
 	private String nome;
 	private String terreno;
 	private String clima;
+	private Integer qtdFilmes;
+	
 	
 	public Planeta() {}
 	
-	public Planeta(String nome, String clima, String terreno) {
+	public Planeta(String nome, String clima, String terreno, Integer qtdFimes) {
 		this.setClima(clima);
 		this.setNome(nome);
 		this.setTerreno(terreno);	
+		this.setQtdFilmes(qtdFimes);
 	}
 	
+	public Integer getQtdFilmes() {
+		return qtdFilmes;
+	}
+
+	public void setQtdFilmes(Integer qtdFilmes) {
+		this.qtdFilmes = qtdFilmes;
+	}
+
 	public String getNome() {
 		return nome;
 	}
